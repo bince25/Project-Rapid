@@ -8,6 +8,7 @@ public class TimerManager : MonoBehaviour
 
     private float _timeRemaining = 0;
     private bool _timerIsRunning = false;
+    private bool _tickTockStarted = false;
 
     private void Awake()
     {
@@ -32,6 +33,23 @@ public class TimerManager : MonoBehaviour
                 {
                     _timeRemaining = 0;
                 }
+
+                if (_timeRemaining <= 10 && !_tickTockStarted)
+                {
+                    AudioManager.Instance.PlayMusic(MusicTrack.TickTock, true);
+                    _tickTockStarted = true;
+                }
+                if (_timeRemaining > 10 && _tickTockStarted)
+                {
+                    AudioManager.Instance.StopMusic(MusicTrack.TickTock);
+                    _tickTockStarted = false;
+                }
+
+                if (_timeRemaining <= 0)
+                {
+                    AudioManager.Instance.StopMusic(MusicTrack.TickTock);
+                }
+
                 if (TimerText != null)
                 {
                     TimerText.text = $"{Mathf.FloorToInt(_timeRemaining / 60):00}:{Mathf.FloorToInt(_timeRemaining % 60):00}";
@@ -50,7 +68,7 @@ public class TimerManager : MonoBehaviour
     /// </summary>
     public void StartTimer()
     {
-        _timeRemaining = 180;
+        _timeRemaining = GameConstants.DEFAULT_TIMER_DURATION;
         _timerIsRunning = true;
     }
 
@@ -83,6 +101,28 @@ public class TimerManager : MonoBehaviour
     /// </summary>
     public float GetTimeRemaining()
     {
+        return _timeRemaining;
+    }
+
+    /// <summary>
+    /// Adds time to the timer
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public float AddTime(float time)
+    {
+        _timeRemaining += time;
+        return _timeRemaining;
+    }
+
+    /// <summary>
+    /// Subtracts time from the timer
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public float SubtractTime(float time)
+    {
+        _timeRemaining -= time;
         return _timeRemaining;
     }
 }
