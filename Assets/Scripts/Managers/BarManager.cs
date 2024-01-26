@@ -19,15 +19,14 @@ public class BarManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            IncreaseSliderValue(15.73f);
-        }
+
     }
 
     /// <summary>
     /// Increases the slider value by the given value
     /// </summary>
-    public void IncreaseSliderValue(float value){
+    public void IncreaseSliderValue(float value)
+    {
         slider.value += value;
         valueText.text = slider.value.ToString("F1");
         CheckSliderValue();
@@ -35,7 +34,8 @@ public class BarManager : MonoBehaviour
     /// <summary>
     /// Decreases the slider value by the given value
     /// </summary>
-    public void DecreaseSliderValue(float value){
+    public void DecreaseSliderValue(float value)
+    {
         slider.value -= value;
         valueText.text = slider.value.ToString("F1");
         CheckSliderValue();
@@ -43,12 +43,15 @@ public class BarManager : MonoBehaviour
     /// <summary>
     /// Checks if the slider value is greater than or equal to 100 or less than or equal to 0
     /// </summary>
-    void CheckSliderValue(){
-        if(slider.value >= 100){
+    void CheckSliderValue()
+    {
+        if (slider.value >= 100)
+        {
             slider.value = 100;
             Debug.Log("You Win");
         }
-        else if (slider.value <= 0){
+        else if (slider.value <= 0)
+        {
             slider.value = 0;
             Debug.Log("You Lose");
         }
