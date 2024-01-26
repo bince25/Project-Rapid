@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject heldBaby = null;
     protected GameObject currentIncubatorArea = null;
+    protected GameObject pregnantWoman = null;
 
     protected virtual void Awake()
     {
@@ -66,6 +67,10 @@ public class PlayerController : MonoBehaviour
         {
             currentIncubatorArea = other.gameObject;
         }
+        else if (other.CompareTag("Pregnant"))
+        {
+            pregnantWoman = other.gameObject;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -73,6 +78,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject == currentIncubatorArea)
         {
             currentIncubatorArea = null;
+        }
+        else if (other.gameObject == pregnantWoman)
+        {
+            pregnantWoman = null;
         }
     }
 
@@ -102,6 +111,7 @@ public class PlayerController : MonoBehaviour
     protected void PickUpBaby()
     {
         IncubatorController incubator = currentIncubatorArea.GetComponentInParent<IncubatorController>();
+        PregnantController pregnant = pregnantWoman.GetComponent<PregnantController>();
         if (incubator != null)
         {
             GameObject baby = incubator.PickUpBaby();
@@ -117,6 +127,20 @@ public class PlayerController : MonoBehaviour
                 // Sound effect: No baby to pick up
                 Debug.Log("No baby in this incubator to pick up.");
             }
+        }
+        else if (pregnant != null)
+        {
+            heldBaby = pregnant.TakeBaby();
+
+            if (heldBaby != null)
+            {
+                heldBaby.transform.SetParent(transform);
+            }
+        }
+        else
+        {
+            // Sound effect: No baby to pick up
+            Debug.Log("No baby in this incubator to pick up.");
         }
     }
 }

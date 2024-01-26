@@ -7,6 +7,9 @@ public class PregnantController : MonoBehaviour
     private GameObject notification;
     public bool isActivated = false;
     private bool playerIsNear = false;
+    private bool babyIsBorn = false;
+
+    [SerializeField] private GameObject baby;
 
     void Update()
     {
@@ -31,6 +34,26 @@ public class PregnantController : MonoBehaviour
         {
             playerIsNear = false;
         }
+    }
+
+    public void GiveBirth()
+    {
+        if (babyIsBorn)
+        {
+            return;
+        }
+        Instantiate(baby, this.transform.position, Quaternion.identity);
+        babyIsBorn = true;
+    }
+
+    public GameObject TakeBaby()
+    {
+        if (!babyIsBorn)
+        {
+            return null;
+        }
+        babyIsBorn = false;
+        return baby;
     }
 
     public void Activate()
