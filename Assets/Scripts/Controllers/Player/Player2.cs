@@ -20,6 +20,21 @@ public class Player2 : PlayerController
         // Add additional update logic for Player 1 if needed
     }
 
+    protected override void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            if (heldBaby == null && this.currentIncubatorArea != null)
+            {
+                PickUpBaby();
+            }
+            else if (heldBaby != null && currentIncubatorArea != null)
+            {
+                PlaceBaby();
+            }
+        }
+    }
+
     protected override void Move()
     {
         base.Move();

@@ -20,12 +20,27 @@ public class Player1 : PlayerController
         // Add additional update logic for Player 1 if needed
     }
 
+    protected override void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (heldBaby == null && this.currentIncubatorArea != null)
+            {
+                PickUpBaby();
+            }
+            else if (heldBaby != null && currentIncubatorArea != null)
+            {
+                PlaceBaby();
+            }
+        }
+    }
+
     protected override void Move()
     {
         base.Move();
         // Add additional movement logic for Player 1 if needed
     }
-    
+
     protected override string GetHorizontalInput()
     {
         return "Horizontal";
