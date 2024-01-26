@@ -25,18 +25,26 @@ public class PlayerController : MonoBehaviour
     {
         Move();
     }
+    /// <summary>
+    /// Moves the player based on the input
+    /// </summary>
     protected virtual void Move()
     {
         Vector2 moveInput = new Vector2(Input.GetAxis(GetHorizontalInput()), Input.GetAxis(GetVerticalInput()));
         Vector2 moveVelocity = moveInput.normalized * moveSpeed;
         rb.velocity = moveVelocity;
     }
-
+    /// <summary>
+    /// Gets the horizontal input axis
+    /// </summary>
     protected virtual string GetHorizontalInput()
     {
         return "Horizontal";
     }
 
+    /// <summary>
+    /// Gets the vertical input axis
+    /// </summary>
     protected virtual string GetVerticalInput()
     {
         return "Vertical";
