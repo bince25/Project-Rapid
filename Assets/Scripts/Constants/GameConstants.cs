@@ -4,4 +4,5 @@ public static class GameConstants
 {
     public const int DEFAULT_TIMER_DURATION = 60;
     public const float DEFAULT_FADE_DURATION = 0.2f;
+    public const float DEFAULT_SATISFACTION_LEVEL = 25f;
 }

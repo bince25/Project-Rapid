@@ -7,7 +7,7 @@ public class AttackSpawner : MonoBehaviour
     public float spawnRate = 1f;
     private float nextSpawnTime = 0f;
     private int spawnCount = 0;
-    private int hitCount = 0;
+    public int hitCount = 0;
 
     [SerializeField]
     private bool spawning = false;

@@ -197,7 +197,7 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = startVolume;
     }
 
-    public void PlaySFX(SFX sfx, float volume = 1.0f)
+    public void PlaySFX(SFX sfx, float volume = 0.4f)
     {
         AudioClip clip = GetSFXClip(sfx);
         if (clip != null)

@@ -89,6 +89,7 @@ public class PregnantController : MonoBehaviour
         gaveBirth = true;
         baby = Instantiate(babyPrefab, this.transform.position, Quaternion.identity);
         babyIsBorn = true;
+        GameManager.Instance.RecordBirth();
     }
 
     public GameObject TakeBaby()

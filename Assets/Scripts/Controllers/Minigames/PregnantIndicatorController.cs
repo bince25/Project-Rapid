@@ -106,6 +106,23 @@ public class PregnantIndicatorController : MonoBehaviour
         float distance = Vector3.Distance(transform.position, center.position);
         int score = Mathf.Max(0, 100 - Mathf.RoundToInt(distance * 10));
         Debug.Log("Score: " + score);
+        float correctedScore = 0f;
+
+        if (score >= 60)
+        {
+            // Scale down the score minus 60 between 0-10
+            correctedScore = Mathf.Clamp((score - 60) / 4f, 0f, 10f);
+        }
+        else
+        {
+            // Scale down the score minus 60 between 0-10
+            correctedScore = Mathf.Clamp((score - 60) / 4f, -10f, 0f);
+        }
+
+        Debug.Log("Corrected Score: " + correctedScore);
+
+        GameManager.Instance.UpdateSatisfactionLevel(correctedScore);
+
         PregnantManager.Instance.GiveBirthToBabyAndDestroyPregnant();
         isMoving = true;
     }

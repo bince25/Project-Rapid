@@ -37,9 +37,22 @@ public class ShieldGameManager : MonoBehaviour
 
     public void EndGame()
     {
+        int hitCount = attackSpawner.hitCount;
+
+        float score = 10f - (hitCount * 4f);
+
+        if (score < 0f)
+        {
+            score -= 2f;
+        }
+
+        GameManager.Instance.UpdateSatisfactionLevel(score);
+
         attackSpawner.Reset();
         canvas.gameObject.SetActive(false);
         heldBaby.GetComponent<BabyController>().StopCrying();
         heldBaby.transform.parent.GetComponent<PlayerController>().SetCanMove(true);
+
+        GameManager.Instance.RecordDiaperChange();
     }
 }

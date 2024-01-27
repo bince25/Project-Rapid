@@ -44,6 +44,8 @@ public class IncubatorController : MonoBehaviour
         {
             // Sound effect: Error or denied
             Debug.Log("Incubator is already occupied or does not match the baby's original incubator.");
+            GameManager.Instance.UpdateSatisfactionLevel(-3f);
+            AudioManager.Instance.PlaySFX(SFX.Denied);
             return false;
         }
     }

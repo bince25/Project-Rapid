@@ -13,13 +13,20 @@ public class BarManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        slider.value = 25;
+        slider.value = GameConstants.DEFAULT_SATISFACTION_LEVEL;
         valueText.text = slider.value.ToString("F1");
     }
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void SetSliderValue(float value)
+    {
+        slider.value = value;
+        valueText.text = slider.value.ToString("F1");
+        CheckSliderValue();
     }
 
     /// <summary>
