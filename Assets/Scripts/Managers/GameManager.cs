@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckGameOver();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             EndGame();
@@ -124,5 +125,13 @@ public class GameManager : MonoBehaviour
     public void RecordCryDuration(float cryDuration)
     {
         stats.UpdateCryingDuration(cryDuration);
+    }
+
+    public void CheckGameOver()
+    {
+        if (stats.satisfactionLevel <= 0 || stats.timeRemaining <= 0 || stats.satisfactionLevel >= 100)
+        {
+            EndGame();
+        }
     }
 }
