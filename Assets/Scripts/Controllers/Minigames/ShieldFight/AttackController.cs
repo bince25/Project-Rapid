@@ -4,6 +4,7 @@ public class AttackController : MonoBehaviour
 {
     public float moveSpeed = 5f; // Speed at which the attack moves
     private Vector3 moveDirection; // Direction for the attack to move
+    private bool hit = false;
 
     // Function to be called by the spawner to set the attack's movement direction
     public void SetMoveDirection(Vector3 direction)
@@ -17,23 +18,16 @@ public class AttackController : MonoBehaviour
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Shield"))
-        {
-            // Logic to execute when an attack collides with the shield, e.g., destroy the attack
-            Destroy(gameObject);
-
-            // Optional: Add visual or audio feedback for the collision
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (hit)
+        {
+            return;
+        }
         GetComponentInParent<AttackSpawner>().AttackDestroyed();
         if (other.CompareTag("Shield"))
         {
-            Destroy(gameObject); // Destroy the attack on collision
+            Destroy(gameObject);
 
             // Optional: Add visual or audio feedback for the collision
         }
