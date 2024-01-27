@@ -5,13 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pregnant
-<<<<<<< Updated upstream
-  - Shield
-  - MinigamePlayer
-=======
   - FxTemporaire
   - IncubatorArea
->>>>>>> Stashed changes
+  - Shield
+  - MinigamePlayer
+  - BabySit
   layers:
   - Default
   - TransparentFX

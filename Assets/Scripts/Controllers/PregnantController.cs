@@ -9,6 +9,7 @@ public class PregnantController : MonoBehaviour
     private bool playerIsNear = false;
     private bool babyIsBorn = false;
     private bool gaveBirth = false;
+    private bool isPlayer2;
 
     [SerializeField] private GameObject babyPrefab;
     [SerializeField] private GameObject baby;
@@ -16,10 +17,26 @@ public class PregnantController : MonoBehaviour
 
     void Update()
     {
-        if (playerIsNear && !gaveBirth && isActivated && Input.GetKeyDown(KeyCode.E))
+        if (playerIsNear && !gaveBirth && isActivated)
         {
-            // Open Mini-Game
-            PregnantManager.Instance.ActivateMiniGame();
+            switch (isPlayer2)
+            {
+                case true:
+                    if (Input.GetKeyDown(KeyCode.RightShift))
+                    {
+                        // Open Mini-Game
+                        PregnantManager.Instance.ActivateMiniGame(isPlayer2);
+                    }
+                    break;
+                case false:
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
+                    {
+                        // Open Mini-Game
+                        PregnantManager.Instance.ActivateMiniGame(isPlayer2);
+                    }
+                    break;
+            }
+
         }
     }
 
@@ -28,6 +45,14 @@ public class PregnantController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerIsNear = true;
+            if (other.gameObject.GetComponent<PlayerController>().isPlayer2)
+            {
+                isPlayer2 = true;
+            }
+            else
+            {
+                isPlayer2 = false;
+            }
         }
     }
 

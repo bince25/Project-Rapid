@@ -7,23 +7,58 @@ public class ShieldController : MonoBehaviour
     private readonly float angleDown = 180f;  // Angle for the shield facing down
     private readonly float angleLeft = 90f;  // Angle for the shield facing left
     private readonly float angleRight = 270f;  // Angle for the shield facing right
+    public bool isPlayer2;
 
     void Update()
     {
-        // Check for key presses (arrow keys and WASD) and rotate the shield to the corresponding direction
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        switch (isPlayer2)
+        {
+            case true:
+                Player2Controls();
+                break;
+            case false:
+                Player1Controls();
+                break;
+        }
+    }
+
+    // Function to control the shield for Player 1
+    void Player2Controls()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             SetShieldRotation(angleUp);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             SetShieldRotation(angleDown);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             SetShieldRotation(angleLeft);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SetShieldRotation(angleRight);
+        }
+    }
+
+    // Function to control the shield for Player 2
+    void Player1Controls()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SetShieldRotation(angleUp);
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            SetShieldRotation(angleDown);
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            SetShieldRotation(angleLeft);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             SetShieldRotation(angleRight);
         }

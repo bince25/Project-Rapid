@@ -11,6 +11,7 @@ public class Player2 : PlayerController
     protected override void Start()
     {
         base.Start();
+        isPlayer2 = true;
         // Add additional initialization for Player 1 if needed
     }
 
@@ -32,7 +33,16 @@ public class Player2 : PlayerController
             {
                 PlaceBaby();
             }
+            else if (heldBaby != null && babySit != null)
+            {
+                ShieldGameManager.Instance.StartGame(heldBaby);
+            }
         }
+    }
+
+    public override void SetCanMove(bool canMove)
+    {
+        base.SetCanMove(canMove);
     }
 
     protected override void Move()

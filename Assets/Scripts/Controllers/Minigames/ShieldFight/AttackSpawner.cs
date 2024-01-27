@@ -48,7 +48,7 @@ public class AttackSpawner : MonoBehaviour
             else if (spawnCount >= MAXIMUM_SPAWN_COUNT && currentAttackCount <= 0)
             {
                 spawning = false;
-                canvas.gameObject.SetActive(false);
+                ShieldGameManager.Instance.EndGame();
             }
         }
     }
@@ -64,7 +64,7 @@ public class AttackSpawner : MonoBehaviour
         hitCount++;
         if (hitCount >= MAXIMUM_HIT_COUNT)
         {
-            canvas.gameObject.SetActive(false);
+            ShieldGameManager.Instance.EndGame();
         }
     }
 

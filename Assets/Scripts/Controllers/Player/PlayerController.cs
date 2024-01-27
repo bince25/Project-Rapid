@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public GameObject heldBaby = null;
     protected GameObject currentIncubatorArea = null;
     protected GameObject pregnantWoman = null;
+    protected GameObject babySit = null;
+    protected bool canMove = true;
+    public bool isPlayer2;
 
     protected virtual void Awake()
     {
@@ -36,14 +39,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public virtual void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
+
     /// <summary>
     /// Moves the player based on the input
     /// </summary>
     protected virtual void Move()
     {
-        Vector2 moveInput = new Vector2(Input.GetAxis(GetHorizontalInput()), Input.GetAxis(GetVerticalInput()));
-        Vector2 moveVelocity = moveInput.normalized * moveSpeed;
-        rb.velocity = moveVelocity;
+        if (canMove)
+        {
+            Vector2 moveInput = new Vector2(Input.GetAxis(GetHorizontalInput()), Input.GetAxis(GetVerticalInput()));
+            Vector2 moveVelocity = moveInput.normalized * moveSpeed;
+            rb.velocity = moveVelocity; ;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
     /// <summary>
     /// Gets the horizontal input axis
@@ -71,6 +86,10 @@ public class PlayerController : MonoBehaviour
         {
             pregnantWoman = other.gameObject;
         }
+        else if (other.CompareTag("BabySit"))
+        {
+            babySit = other.gameObject;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -82,6 +101,10 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject == pregnantWoman)
         {
             pregnantWoman = null;
+        }
+        else if (other.gameObject == babySit)
+        {
+            babySit = null;
         }
     }
 

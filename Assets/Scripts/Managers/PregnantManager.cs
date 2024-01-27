@@ -7,6 +7,7 @@ public class PregnantManager : MonoBehaviour
     public Transform pregnantSpawnPoint;
     public GameObject miniGame;
     private bool isSpawning = false;
+    public bool isPlayer2;
     public static PregnantManager Instance { get; private set; }
     void Awake()
     {
@@ -22,8 +23,9 @@ public class PregnantManager : MonoBehaviour
         miniGame.SetActive(false);
     }
 
-    public void ActivateMiniGame()
+    public void ActivateMiniGame(bool isPlayer2)
     {
+        this.isPlayer2 = isPlayer2;
         miniGame.SetActive(true);
     }
 
@@ -32,7 +34,7 @@ public class PregnantManager : MonoBehaviour
         pregnant = GameObject.FindGameObjectWithTag("Pregnant");
         if (pregnant == null && !isSpawning)
         {
-            float time = Random.Range(5f, 15f);
+            float time = Random.Range(4f, 7f);
             Invoke("SpawnAndActivatePregnant", time);
             isSpawning = true;
         }

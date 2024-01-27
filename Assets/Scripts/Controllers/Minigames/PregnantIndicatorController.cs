@@ -16,13 +16,23 @@ public class PregnantIndicatorController : MonoBehaviour
 
     void Update()
     {
-        // Toggle movement when space key is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
+        switch (PregnantManager.Instance.isPlayer2)
         {
-            isMoving = !isMoving;
-            Hit();
+            case true:
+                if (Input.GetKeyDown(KeyCode.RightShift))
+                {
+                    isMoving = !isMoving;
+                    Hit();
+                }
+                break;
+            case false:
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    isMoving = !isMoving;
+                    Hit();
+                }
+                break;
         }
-
         if (isMoving)
         {
             Move();

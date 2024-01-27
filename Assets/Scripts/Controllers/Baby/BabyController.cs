@@ -25,4 +25,11 @@ public class BabyController : MonoBehaviour
         isCrying = true;
     }
 
+    public void StopCrying()
+    {
+        Debug.Log("The baby stopped crying!");
+        notification.SetActive(false);
+        isCrying = false;
+    }
+
 }
