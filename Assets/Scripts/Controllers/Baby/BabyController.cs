@@ -1,13 +1,21 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BabyController : MonoBehaviour
 {
+    private Coroutine incrementCoroutine;
+
     public int OriginalIncubatorId = -1;
     [SerializeField] private int babyIndex;
     public bool isCrying = false;
     public GameObject incubator;
     private GameObject notification;
     private float cryTimer = 0f;
+    public bool isIncubated = false;
+    public bool readyToBeGivenToDad = false;
+    public Slider slider;
+    public int maturityLevel = 0;
 
     void Start()
     {
@@ -26,8 +34,41 @@ public class BabyController : MonoBehaviour
                 GameManager.Instance.DecreaseSatisfactionLevel(5f);
             }
         }
+        if (maturityLevel >= 100)
+        {
+            maturityLevel = 100;
+            StopCoroutine(IncrementNumber());
+            readyToBeGivenToDad = true;
+        }
+
     }
 
+    public void OnPlacedInIncubator()
+    {
+        if (incrementCoroutine != null)
+        {
+            StopCoroutine(incrementCoroutine);
+        }
+        incrementCoroutine = StartCoroutine(IncrementNumber());
+    }
+    public void OnTakenFromIncubator()
+    {
+        if (incrementCoroutine != null)
+        {
+            StopCoroutine(incrementCoroutine);
+            incrementCoroutine = null;
+        }
+    }
+    private IEnumerator IncrementNumber()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1); // Wait for 1 second
+            maturityLevel += 5; // Increment the number
+            slider.value = maturityLevel;
+        }
+
+    }
 
     public void setIndex(int babyIndex)
     {
@@ -37,10 +78,7 @@ public class BabyController : MonoBehaviour
     {
         return babyIndex;
     }
-    public void OnPlacedInIncubator()
-    {
-        Debug.Log("Baby is now in the incubator.");
-    }
+
 
     public void Cry()
     {

@@ -32,20 +32,35 @@ public class DadController : MonoBehaviour
     }
     public bool GiveBabyToDad(GameObject heldBaby)
     {
-        if (dadIndex == heldBaby.GetComponent<BabyController>().getIndex())
+        if (heldBaby == null)
         {
-            Debug.Log("Baby Given to Dad");
-            notificationHappy.SetActive(true);
-            StartCoroutine(DeactivateAfterAnimation(notificationHappy, happyAnimator.GetCurrentAnimatorStateInfo(0).length));
-            heldBaby.GetComponent<BabyController>().incubator.GetComponent<IncubatorController>().SetIncubatorTaken(false);
-            PregnantManager.Instance.dadSpawnPointsDictionary[dadIndex] = false;
-            Destroy(heldBaby);
-            Destroy(this.gameObject);
-            return true;
+            Debug.Log("No Baby Held");
+            return false;
+        }
+        if (heldBaby.GetComponent<BabyController>().readyToBeGivenToDad)
+        {
+            if (dadIndex == heldBaby.GetComponent<BabyController>().getIndex())
+            {
+                Debug.Log("Baby Given to Dad");
+                notificationHappy.SetActive(true);
+                StartCoroutine(DeactivateAfterAnimation(notificationHappy, happyAnimator.GetCurrentAnimatorStateInfo(0).length));
+                heldBaby.GetComponent<BabyController>().incubator.GetComponent<IncubatorController>().SetIncubatorTaken(false);
+                PregnantManager.Instance.dadSpawnPointsDictionary[dadIndex] = false;
+                Destroy(heldBaby);
+                Destroy(this.gameObject);
+                return true;
+            }
+            else
+            {
+                Debug.Log("Baby Given to Wrong Dad");
+                notificationSad.SetActive(true);
+                StartCoroutine(DeactivateAfterAnimation(notificationSad, sadAnimator.GetCurrentAnimatorStateInfo(0).length));
+                return false;
+            }
         }
         else
         {
-            Debug.Log("Baby Given to Wrong Dad");
+            Debug.Log("Baby Not Ready to be Given to Dad");
             notificationSad.SetActive(true);
             StartCoroutine(DeactivateAfterAnimation(notificationSad, sadAnimator.GetCurrentAnimatorStateInfo(0).length));
             return false;
