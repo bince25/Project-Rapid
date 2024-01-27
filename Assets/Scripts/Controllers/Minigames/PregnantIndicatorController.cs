@@ -21,6 +21,14 @@ public class PregnantIndicatorController : MonoBehaviour
             case true:
                 if (Input.GetKeyDown(KeyCode.RightShift))
                 {
+                    GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+                    foreach (GameObject p in player)
+                    {
+                        if (p.GetComponent<PlayerController>().isPlayer2)
+                        {
+                            p.GetComponent<PlayerController>().SetCanMove(false);
+                        }
+                    }
                     isMoving = !isMoving;
                     Hit();
                 }
@@ -28,6 +36,14 @@ public class PregnantIndicatorController : MonoBehaviour
             case false:
                 if (Input.GetKeyDown(KeyCode.LeftShift))
                 {
+                    GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+                    foreach (GameObject p in player)
+                    {
+                        if (!p.GetComponent<PlayerController>().isPlayer2)
+                        {
+                            p.GetComponent<PlayerController>().SetCanMove(false);
+                        }
+                    }
                     isMoving = !isMoving;
                     Hit();
                 }

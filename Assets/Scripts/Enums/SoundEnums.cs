@@ -1,6 +1,7 @@
 public enum MusicTrack
 {
     TickTock,
+    BackgroundMusic,
     // Add more tracks as needed
 }
 
@@ -14,5 +15,6 @@ public enum SFX
     FailAbsurd,
     Birth,
     BasicClick,
-    BasicNotification
+    BasicNotification,
+    Laser
 }

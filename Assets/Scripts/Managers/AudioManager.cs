@@ -96,6 +96,37 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Plays the specified music track on the specified music source with specified volume.
+    /// </summary>
+    /// <param name="track"></param>
+    /// <param name="loop"></param>
+    /// <param name="volume"></param>
+    /// <param name="sourceIndex"></param>
+    public void PlayMusic(MusicTrack track, bool loop, float volume, int sourceIndex = 0)
+    {
+        if (sourceIndex < 0 || sourceIndex >= musicSources.Count)
+        {
+            Debug.LogWarning("Invalid music source index.");
+            return;
+        }
+
+        AudioClip clip = GetMusicClip(track);
+        if (clip != null)
+        {
+            AudioSourceWrapper wrapper = musicSources[sourceIndex];
+            wrapper.AudioSource.clip = clip;
+            wrapper.AudioSource.loop = loop;
+            wrapper.AudioSource.volume = volume;
+            wrapper.AudioSource.Play();
+            wrapper.CurrentTrack = track;
+        }
+        else
+        {
+            Debug.LogWarning("Music track not found: " + track.ToString());
+        }
+    }
+
+    /// <summary>
     /// Stops the specified music track on the specified music source.
     /// </summary>
     /// <param name="track"></param>
