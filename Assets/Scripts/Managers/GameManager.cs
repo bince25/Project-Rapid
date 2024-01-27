@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckGameOver()
     {
-        if (stats.satisfactionLevel <= 0)
+        if (stats.satisfactionLevel <= 0 || stats.satisfactionLevel >= 100)
         {
             EndGame();
             isChecked = true;
