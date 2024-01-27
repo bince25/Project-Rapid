@@ -45,7 +45,7 @@ public class AttackSpawner : MonoBehaviour
                 spawnCount++;
                 currentAttackCount++;
             }
-            else if (spawnCount >= MAXIMUM_SPAWN_COUNT)
+            else if (spawnCount >= MAXIMUM_SPAWN_COUNT && currentAttackCount <= 0)
             {
                 spawning = false;
                 canvas.gameObject.SetActive(false);
