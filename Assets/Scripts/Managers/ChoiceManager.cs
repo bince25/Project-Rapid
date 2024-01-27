@@ -40,6 +40,15 @@ public class ChoiceManager : MonoBehaviour
 
     void Update()
     {
+        if (choicePanel.activeSelf)
+        {
+            HandleInput();
+        }
+
+    }
+
+    void HandleInput()
+    {
         switch (isPlayer2)
         {
             case true:
@@ -51,7 +60,7 @@ public class ChoiceManager : MonoBehaviour
                 {
                     MoveCursor(1); // Move down in the options
                 }
-                if (Input.GetKeyDown(KeyCode.RightShift))
+                if (Input.GetKeyDown(KeyCode.RightControl))
                 {
                     SelectCurrentOption();
                 }
@@ -65,7 +74,7 @@ public class ChoiceManager : MonoBehaviour
                 {
                     MoveCursor(1); // Move down in the options
                 }
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetKeyDown(KeyCode.LeftControl))
                 {
                     SelectCurrentOption();
                 }
@@ -106,6 +115,7 @@ public class ChoiceManager : MonoBehaviour
         else if (currentSelection == 1)
         {
             Debug.Log("Option 2 selected.");
+            dadInConversation.GetComponent<DadController>().notification.SetActive(false);
             GameManager.Instance.TimerManager.AddTime(15);
             GameManager.Instance.DecreaseSatisfactionLevel(15);
         }

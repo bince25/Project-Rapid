@@ -59,6 +59,8 @@ public class TimerManager : MonoBehaviour
             {
                 _timeRemaining = 0;
                 _timerIsRunning = false;
+                AudioManager.Instance.StopMusic(MusicTrack.TickTock);
+                GameManager.Instance.EndGame();
             }
         }
     }
