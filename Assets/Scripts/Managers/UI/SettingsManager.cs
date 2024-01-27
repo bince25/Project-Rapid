@@ -59,13 +59,13 @@ public class SettingsManager : MonoBehaviour
 
     public void LoadSettings()
     {
-        _masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0);
-        _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0);
-        _sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0);
+        _masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 2);
+        _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 5);
+        _sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 5);
 
-        SetMasterVolume(PlayerPrefs.GetFloat("MasterVolume", 0));
-        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0));
-        SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 0));
+        SetMasterVolume(PlayerPrefs.GetFloat("MasterVolume", 2));
+        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 5));
+        SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 5));
         resolutionDropdown.value = PlayerPrefs.GetInt("Resolution", 0);
     }
 

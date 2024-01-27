@@ -17,5 +17,6 @@ public enum SFX
     BasicClick,
     BasicNotification,
     Laser,
-    Denied
+    Denied,
+    Click
 }

@@ -153,6 +153,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayClickSFX()
+    {
+        PlaySFX(SFX.Click);
+    }
+
     /// <summary>
     /// Stops the specified music track on the specified music source.
     /// </summary>
