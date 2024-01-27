@@ -37,6 +37,8 @@ public class IncubatorController : MonoBehaviour
             if (storedBaby != null)
             {
                 Debug.Log("Baby placed successfully.");
+                baby.GetComponent<BabyController>().isIncubated = true;
+                baby.GetComponent<BabyController>().OnPlacedInIncubator();
                 StartBabyTimer(storedBaby);
             }
             return true;
@@ -90,6 +92,8 @@ public class IncubatorController : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(SFX.PickUpBaby);
             GameObject baby = storedBaby;
+            baby.GetComponent<BabyController>().isIncubated = false;
+            baby.GetComponent<BabyController>().OnTakenFromIncubator();
             baby.SetActive(true); // Reactivate the baby when picked up
             storedBaby = null; // Clear the stored reference
 

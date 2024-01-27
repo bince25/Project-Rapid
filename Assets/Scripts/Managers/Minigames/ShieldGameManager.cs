@@ -20,19 +20,22 @@ public class ShieldGameManager : MonoBehaviour
 
     public void StartGame(GameObject heldBaby)
     {
-        this.heldBaby = heldBaby;
-        heldBaby.transform.parent.GetComponent<PlayerController>().SetCanMove(false);
-        if (heldBaby.transform.parent.GetComponent<PlayerController>().isPlayer2)
+        if (heldBaby.GetComponent<BabyController>().isCrying)
         {
-            shieldController.isPlayer2 = true;
+            this.heldBaby = heldBaby;
+            heldBaby.transform.parent.GetComponent<PlayerController>().SetCanMove(false);
+            if (heldBaby.transform.parent.GetComponent<PlayerController>().isPlayer2)
+            {
+                shieldController.isPlayer2 = true;
+            }
+            else
+            {
+                shieldController.isPlayer2 = false;
+            }
+            canvas.gameObject.SetActive(true);
+            attackSpawner.Reset();
+            attackSpawner.StartSpawning();
         }
-        else
-        {
-            shieldController.isPlayer2 = false;
-        }
-        canvas.gameObject.SetActive(true);
-        attackSpawner.Reset();
-        attackSpawner.StartSpawning();
     }
 
     public void EndGame()

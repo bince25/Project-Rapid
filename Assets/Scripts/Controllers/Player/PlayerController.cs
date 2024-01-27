@@ -126,7 +126,6 @@ public class PlayerController : MonoBehaviour
         if (incubator != null && incubator.TryPlaceBaby(heldBaby))
         {
             heldBaby = null;
-
             // Sound effect: Successful placement
             Debug.Log("Baby placed in the incubator.");
         }

@@ -11,7 +11,7 @@ public class PregnantController : MonoBehaviour
     private bool gaveBirth = false;
     private bool isPlayer2;
 
-    [SerializeField] private GameObject babyPrefab;
+    [SerializeField] private GameObject[] babyPrefabs;
     [SerializeField] private GameObject baby;
 
 
@@ -87,6 +87,7 @@ public class PregnantController : MonoBehaviour
             return;
         }
         gaveBirth = true;
+        GameObject babyPrefab = babyPrefabs[Random.Range(0, babyPrefabs.Length)];
         baby = Instantiate(babyPrefab, this.transform.position, Quaternion.identity);
         baby.GetComponent<BabyController>().setIndex(index);
         babyIsBorn = true;
