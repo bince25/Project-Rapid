@@ -208,7 +208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 0
-  babyPrefab: {fileID: 8916492237342829093, guid: 465c46bf59ed87940a33f7a9250f150a, type: 3}
+  babyPrefabs:
+  - {fileID: 8916492237342829093, guid: 465c46bf59ed87940a33f7a9250f150a, type: 3}
+  - {fileID: 8916492237342829093, guid: 35bb1b77407c73544ba8db38dce92cf4, type: 3}
+  - {fileID: 8916492237342829093, guid: 17f222ab5a0ecee41baea1c23ac01882, type: 3}
+  - {fileID: 8916492237342829093, guid: 8f37e4fe12e0aec49a00cd7bb3f57df3, type: 3}
   baby: {fileID: 0}
 --- !u!58 &1900450705423874004
 CircleCollider2D:
