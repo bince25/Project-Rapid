@@ -5,9 +5,11 @@ public class PregnantManager : MonoBehaviour
     private GameObject pregnant;
     public GameObject pregnantPrefab;
     public Transform pregnantSpawnPoint;
+    public GameObject dadPrefab;
+    public Transform[] dadSpawnPoints;
     public GameObject miniGame;
     private bool isSpawning = false;
-    public bool isPlayer2;
+    [HideInInspector] public bool isPlayer2;
     public static PregnantManager Instance { get; private set; }
     void Awake()
     {
@@ -32,10 +34,12 @@ public class PregnantManager : MonoBehaviour
     void Update()
     {
         pregnant = GameObject.FindGameObjectWithTag("Pregnant");
-        if (pregnant == null && !isSpawning)
+        GameObject[] babies = GameObject.FindGameObjectsWithTag("Baby");
+        if (pregnant == null && !isSpawning && babies.Length < 6)
         {
             float time = Random.Range(4f, 7f);
             Invoke("SpawnAndActivatePregnant", time);
+            Invoke("SpawnDad", time + 1f);
             isSpawning = true;
         }
     }
@@ -46,5 +50,20 @@ public class PregnantManager : MonoBehaviour
         pregnant = Instantiate(pregnantPrefab, spawnPoint, Quaternion.identity);
         pregnant.GetComponent<PregnantController>().Activate();
         isSpawning = false;
+    }
+
+    void SpawnDad()
+    {
+        GameObject[] dads = GameObject.FindGameObjectsWithTag("Dad");
+        Vector3 spawnPoint;
+        if (dads.Length > 0)
+        {
+            spawnPoint = dadSpawnPoints[dads.Length].position;
+        }
+        else
+        {
+            spawnPoint = dadSpawnPoints[0].position;
+        }
+        GameObject dad = Instantiate(dadPrefab, spawnPoint, Quaternion.identity);
     }
 }
