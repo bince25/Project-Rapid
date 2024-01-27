@@ -26,7 +26,7 @@ public class PregnantIndicatorController : MonoBehaviour
                     {
                         if (p.GetComponent<PlayerController>().isPlayer2)
                         {
-                            p.GetComponent<PlayerController>().SetCanMove(false);
+                            p.GetComponent<PlayerController>().SetCanMove(true);
                         }
                     }
                     isMoving = !isMoving;
@@ -41,7 +41,7 @@ public class PregnantIndicatorController : MonoBehaviour
                     {
                         if (!p.GetComponent<PlayerController>().isPlayer2)
                         {
-                            p.GetComponent<PlayerController>().SetCanMove(false);
+                            p.GetComponent<PlayerController>().SetCanMove(true);
                         }
                     }
                     isMoving = !isMoving;
