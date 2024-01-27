@@ -14,7 +14,7 @@ public class BarManager : MonoBehaviour
     void Start()
     {
         slider.value = GameConstants.DEFAULT_SATISFACTION_LEVEL;
-        valueText.text = slider.value.ToString("F1");
+        valueText.text = slider.value.ToString("F1") + "%";
     }
     // Update is called once per frame
     void Update()
@@ -25,7 +25,7 @@ public class BarManager : MonoBehaviour
     public void SetSliderValue(float value)
     {
         slider.value = value;
-        valueText.text = slider.value.ToString("F1");
+        valueText.text = slider.value.ToString("F1") + "%";
         CheckSliderValue();
     }
 
@@ -35,7 +35,7 @@ public class BarManager : MonoBehaviour
     public void IncreaseSliderValue(float value)
     {
         slider.value += value;
-        valueText.text = slider.value.ToString("F1");
+        valueText.text = slider.value.ToString("F1") + "%";
         CheckSliderValue();
     }
     /// <summary>
@@ -44,7 +44,7 @@ public class BarManager : MonoBehaviour
     public void DecreaseSliderValue(float value)
     {
         slider.value -= value;
-        valueText.text = slider.value.ToString("F1");
+        valueText.text = slider.value.ToString("F1") + "%";
         CheckSliderValue();
     }
     /// <summary>

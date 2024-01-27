@@ -20,6 +20,11 @@ public class ScoreboardManager : MonoBehaviour
     private TMP_Text cryDurationText;
     [SerializeField]
     private TMP_Text diaperCountText;
+    [SerializeField]
+    private TMP_Text finalScoreText;
+    [SerializeField]
+    private TMP_Text finalStatusText;
+
 
     private void Start()
     {
@@ -33,6 +38,7 @@ public class ScoreboardManager : MonoBehaviour
     public void SetGameStats(GameStats stats)
     {
         gameStats = stats;
+        gameStats.CalculateFinalScore();
         SetTexts();
     }
 
@@ -44,6 +50,8 @@ public class ScoreboardManager : MonoBehaviour
         SetTimeRemaining();
         SetCryDuration();
         SetDiaperCount();
+        SetFinalScore();
+        SetFinalStatus();
     }
 
     public void OpenScoreboard()
@@ -54,6 +62,27 @@ public class ScoreboardManager : MonoBehaviour
     public void CloseScoreboard()
     {
         scoreboardPanel.SetActive(false);
+    }
+
+    public void SetFinalScore()
+    {
+        finalScoreText.text = gameStats.score.ToString();
+    }
+
+    public void SetFinalStatus()
+    {
+        if (gameStats.score >= 300)
+        {
+            finalStatusText.text = "Are you sure that you are not a human?";
+        }
+        else if (gameStats.score >= 150)
+        {
+            finalStatusText.text = "You should do better!";
+        }
+        else
+        {
+            finalStatusText.text = "You are not a slave anymore, you will be killed :)";
+        }
     }
 
     public void SetBirthCount()

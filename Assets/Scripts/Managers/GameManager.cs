@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public BarManager barManager;
     public ScoreboardManager scoreboardManager;
 
+    private bool isPaused = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -47,9 +49,22 @@ public class GameManager : MonoBehaviour
         TimerManager.StartTimer();
     }
 
+    public void StopGame()
+    {
+        TimerManager.StopTimer();
+        isPaused = true;
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        TimerManager.ResumeTimer();
+        isPaused = false;
+        Time.timeScale = 1;
+    }
+
     public void EndGame()
     {
-        Debug.Log("Game Over");
         stats.timeRemaining = TimerManager.GetTimeRemaining();
         TimerManager.StopTimer();
         if (scoreboardManager != null)

@@ -10,6 +10,17 @@ public class GameStats
     public int numberOfDiaperChanges = 0;
     public float timeRemaining = GameConstants.DEFAULT_TIMER_DURATION;
 
+    public float score = 0f;
+
+    public void CalculateFinalScore()
+    {
+        score += numberOfBirths * GameConstants.SCORE_PER_BIRTH;
+        score += numberOfKilledFathers * GameConstants.SCORE_PER_KILLED_FATHER;
+        score += satisfactionLevel * GameConstants.SCORE_PER_SATISFACTION_LEVEL;
+        score -= totalCryingDuration * GameConstants.SCORE_PER_CRYING_DURATION;
+        score += numberOfDiaperChanges * GameConstants.SCORE_PER_DIAPER_CHANGE;
+    }
+
     /// <summary>
     /// Updates the satisfaction level by the given amount.
     /// </summary>

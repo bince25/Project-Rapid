@@ -72,6 +72,11 @@ public class TimerManager : MonoBehaviour
         _timerIsRunning = true;
     }
 
+    public void ResumeTimer()
+    {
+        _timerIsRunning = true;
+    }
+
     /// <summary>
     /// Starts the timer with a custom time
     /// </summary>
