@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class IncubatorController : MonoBehaviour
@@ -13,7 +14,8 @@ public class IncubatorController : MonoBehaviour
         {
             storedBaby = baby;
             baby.transform.SetParent(transform);
-            baby.SetActive(false); // Hide the baby when in the incubator
+            baby.transform.localPosition = Vector3.zero;
+            //baby.SetActive(false); // Hide the baby when in the incubator
 
             // Set the baby's original incubator ID if it's not already set
             if (babyController.OriginalIncubatorId == -1)
@@ -22,7 +24,12 @@ public class IncubatorController : MonoBehaviour
             }
 
             // Sound effect: Baby placed
-            Debug.Log("Baby placed successfully.");
+
+            if (storedBaby != null)
+            {
+                Debug.Log("Baby placed successfully.");
+                StartBabyTimer(storedBaby);
+            }
             return true;
         }
         else
@@ -31,6 +38,21 @@ public class IncubatorController : MonoBehaviour
             Debug.Log("Incubator is already occupied or does not match the baby's original incubator.");
             return false;
         }
+    }
+
+
+    public void StartBabyTimer(GameObject baby)
+    {
+        StartCoroutine(BabyTimer(baby, 5f)); // 10 seconds timer
+    }
+
+    private IEnumerator BabyTimer(GameObject baby, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Trigger the baby's cry or any other action here
+        baby.GetComponent<BabyController>().Cry();
+        Debug.Log("The baby is crying!");
     }
 
     public GameObject PickUpBaby()

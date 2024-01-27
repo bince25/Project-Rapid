@@ -110,15 +110,17 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     protected void PickUpBaby()
     {
-        IncubatorController incubator = currentIncubatorArea.GetComponentInParent<IncubatorController>();
-        PregnantController pregnant = pregnantWoman.GetComponent<PregnantController>();
-        if (incubator != null)
+        if (currentIncubatorArea != null)
         {
+            IncubatorController incubator = currentIncubatorArea.GetComponentInParent<IncubatorController>();
             GameObject baby = incubator.PickUpBaby();
             if (baby != null)
             {
                 heldBaby = baby;
-
+                if (heldBaby != null)
+                {
+                    heldBaby.transform.SetParent(transform);
+                }
                 // Sound effect: Baby picked up
                 Debug.Log("Baby picked up from the incubator.");
             }
@@ -128,8 +130,9 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("No baby in this incubator to pick up.");
             }
         }
-        else if (pregnant != null)
+        else if (pregnantWoman != null)
         {
+            PregnantController pregnant = pregnantWoman.GetComponent<PregnantController>();
             heldBaby = pregnant.TakeBaby();
 
             if (heldBaby != null)

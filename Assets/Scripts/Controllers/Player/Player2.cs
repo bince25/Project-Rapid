@@ -24,7 +24,7 @@ public class Player2 : PlayerController
     {
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
-            if (heldBaby == null && this.currentIncubatorArea != null)
+            if (heldBaby == null && (this.currentIncubatorArea != null || this.pregnantWoman != null))
             {
                 PickUpBaby();
             }

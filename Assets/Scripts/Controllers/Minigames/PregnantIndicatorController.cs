@@ -7,6 +7,7 @@ public class PregnantIndicatorController : MonoBehaviour
     public Transform right;
     public Transform left;
     public Transform center;
+    public GameObject vfx;
     public float speed = 1.0f;
 
     private float t = 0.0f; // A parameter that goes from 0 to 1
@@ -19,7 +20,7 @@ public class PregnantIndicatorController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isMoving = !isMoving;
-            CalculateScore();
+            Hit();
         }
 
         if (isMoving)
@@ -51,10 +52,34 @@ public class PregnantIndicatorController : MonoBehaviour
 
         transform.position = Vector3.Lerp(right.position, left.position, t);
     }
+
+    void Hit()
+    {
+        GameObject vfxInstance = Instantiate(vfx, transform.position, Quaternion.identity);
+        StartCoroutine(WaitAndCalculateScore(vfxInstance));
+    }
+    IEnumerator WaitAndCalculateScore(GameObject vfxInstance)
+    {
+        // Check if the VFX has a Particle System and get its duration
+        if (vfxInstance.TryGetComponent(out ParticleSystem particleSystem))
+        {
+            yield return new WaitForSeconds(particleSystem.main.duration);
+        }
+        else // If not a Particle System, use a default wait time or animation clip duration
+        {
+            // Replace this with the actual duration of your VFX if it's not a particle system
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        // Now call CalculateScore
+        CalculateScore();
+    }
     void CalculateScore()
     {
         float distance = Vector3.Distance(transform.position, center.position);
         int score = Mathf.Max(0, 100 - Mathf.RoundToInt(distance * 10));
         Debug.Log("Score: " + score);
+        PregnantManager.Instance.GiveBirthToBabyAndDestroyPregnant();
+        isMoving = true;
     }
 }

@@ -8,15 +8,18 @@ public class PregnantController : MonoBehaviour
     public bool isActivated = false;
     private bool playerIsNear = false;
     private bool babyIsBorn = false;
+    private bool gaveBirth = false;
 
+    [SerializeField] private GameObject babyPrefab;
     [SerializeField] private GameObject baby;
+
 
     void Update()
     {
-        if (playerIsNear && isActivated && Input.GetKeyDown(KeyCode.E))
+        if (playerIsNear && !gaveBirth && isActivated && Input.GetKeyDown(KeyCode.E))
         {
             // Open Mini-Game
-            Deactivate();
+            PregnantManager.Instance.ActivateMiniGame();
         }
     }
 
@@ -42,7 +45,8 @@ public class PregnantController : MonoBehaviour
         {
             return;
         }
-        Instantiate(baby, this.transform.position, Quaternion.identity);
+        gaveBirth = true;
+        baby = Instantiate(babyPrefab, this.transform.position, Quaternion.identity);
         babyIsBorn = true;
     }
 
@@ -53,6 +57,7 @@ public class PregnantController : MonoBehaviour
             return null;
         }
         babyIsBorn = false;
+        this.Deactivate();
         return baby;
     }
 
