@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public BarManager barManager;
     public ScoreboardManager scoreboardManager;
 
+    public bool isChecked = false;
     private bool isPaused = false;
 
     private void Awake()
@@ -37,7 +38,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckGameOver();
+        if (!isChecked)
+        {
+            CheckGameOver();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             EndGame();
@@ -67,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         stats.timeRemaining = TimerManager.GetTimeRemaining();
         TimerManager.StopTimer();
+        Time.timeScale = 0;
         if (scoreboardManager != null)
         {
             scoreboardManager.SetGameStats(stats);
@@ -147,6 +152,7 @@ public class GameManager : MonoBehaviour
         if (stats.satisfactionLevel <= 0 || stats.timeRemaining <= 0 || stats.satisfactionLevel >= 100)
         {
             EndGame();
+            isChecked = true;
         }
     }
 }

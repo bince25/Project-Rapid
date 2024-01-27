@@ -40,6 +40,15 @@ public class ChoiceManager : MonoBehaviour
 
     void Update()
     {
+        if (choicePanel.activeSelf)
+        {
+            HandleInput();
+        }
+
+    }
+
+    void HandleInput()
+    {
         switch (isPlayer2)
         {
             case true:
