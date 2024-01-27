@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PregnantManager : MonoBehaviour
@@ -7,8 +8,10 @@ public class PregnantManager : MonoBehaviour
     public Transform pregnantSpawnPoint;
     public GameObject dadPrefab;
     public Transform[] dadSpawnPoints;
+    public Dictionary<int, bool> dadSpawnPointsDictionary = new Dictionary<int, bool>();
     public GameObject miniGame;
     private bool isSpawning = false;
+    int index;
     [HideInInspector] public bool isPlayer2;
     public static PregnantManager Instance { get; private set; }
     void Awake()
@@ -19,9 +22,16 @@ public class PregnantManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        for (int i = 0; i <= 5; i++)
+        {
+            dadSpawnPointsDictionary.Add(i, false);
+        }
+    }
     public void GiveBirthToBabyAndDestroyPregnant()
     {
-        pregnant.GetComponent<PregnantController>().GiveBirth();
+        pregnant.GetComponent<PregnantController>().GiveBirth(index);
         miniGame.SetActive(false);
     }
 
@@ -38,8 +48,8 @@ public class PregnantManager : MonoBehaviour
         if (pregnant == null && !isSpawning && babies.Length < 6)
         {
             float time = Random.Range(4f, 7f);
-            Invoke("SpawnAndActivatePregnant", time);
-            Invoke("SpawnDad", time + 1f);
+            Invoke("SpawnDad", time);
+            Invoke("SpawnAndActivatePregnant", time + 1f);
             isSpawning = true;
         }
     }
@@ -54,16 +64,19 @@ public class PregnantManager : MonoBehaviour
 
     void SpawnDad()
     {
-        GameObject[] dads = GameObject.FindGameObjectsWithTag("Dad");
         Vector3 spawnPoint;
-        if (dads.Length > 0)
+        for (int i = 0; i < dadSpawnPoints.Length; i++)
         {
-            spawnPoint = dadSpawnPoints[dads.Length].position;
+            if (!dadSpawnPointsDictionary[i])
+            {
+                spawnPoint = dadSpawnPoints[i].position;
+                GameObject dad = Instantiate(dadPrefab, spawnPoint, Quaternion.identity);
+                dadSpawnPointsDictionary[i] = true;
+                index = i;
+                dad.GetComponent<DadController>().setDadIndex(i);
+                return;
+            }
         }
-        else
-        {
-            spawnPoint = dadSpawnPoints[0].position;
-        }
-        GameObject dad = Instantiate(dadPrefab, spawnPoint, Quaternion.identity);
+        return;
     }
 }
