@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 public class AudioSourceWrapper
@@ -12,6 +13,9 @@ public class AudioSourceWrapper
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+
+    public AudioMixer audioMixer; // Assign in the Inspector
+    public AudioMixerGroup musicMixerGroup, sfxMixerGroup;
 
     [SerializeField] private List<AudioSourceWrapper> musicSources = new List<AudioSourceWrapper>();
     [SerializeField] private List<AudioSource> sfxSourcesPool = new List<AudioSource>();
@@ -45,6 +49,7 @@ public class AudioManager : MonoBehaviour
             AudioSource sfxSource = gameObject.AddComponent<AudioSource>();
             sfxSource.playOnAwake = false;
             sfxSourcesPool.Add(sfxSource);
+            sfxSource.outputAudioMixerGroup = sfxMixerGroup;
         }
     }
 
@@ -63,7 +68,13 @@ public class AudioManager : MonoBehaviour
             };
             wrapper.AudioSource.playOnAwake = false;
             musicSources.Add(wrapper);
+            wrapper.AudioSource.outputAudioMixerGroup = musicMixerGroup;
         }
+    }
+
+    public void SetVolume(string parameterName, float volume)
+    {
+        audioMixer.SetFloat(parameterName, Mathf.Log10(volume) * 20);
     }
 
     /// <summary>

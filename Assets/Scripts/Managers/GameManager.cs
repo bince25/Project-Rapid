@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         TimerManager.StartTimer();
 
-        AudioManager.Instance.PlayMusic(MusicTrack.BackgroundMusic, true, 0.01f);
+        AudioManager.Instance.PlayMusic(MusicTrack.BackgroundMusic, true, 0.4f);
     }
 
     // Update is called once per frame
