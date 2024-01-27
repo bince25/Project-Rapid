@@ -17326,7 +17326,7 @@ MonoBehaviour:
     satisfactionLevel: 25
     totalCryingDuration: 0
     numberOfDiaperChanges: 0
-    timeRemaining: 60
+    passedTime: 60
     score: 0
   barManager: {fileID: 328813370}
   scoreboardManager: {fileID: 2147273254}
