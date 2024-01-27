@@ -110,6 +110,14 @@ public class ChoiceManager : MonoBehaviour
         {
             Debug.Log("Kill Selected.");
             AudioManager.Instance.PlaySFX(SFX.Laser);
+            GameObject[] babies = GameObject.FindGameObjectsWithTag("Baby");
+            foreach (GameObject baby in babies)
+            {
+                if (baby.GetComponent<BabyController>().getIndex() == dadInConversation.GetComponent<DadController>().getDadIndex())
+                {
+                    Destroy(baby);
+                }
+            }
             Destroy(dadInConversation);
         }
         else if (currentSelection == 1)
