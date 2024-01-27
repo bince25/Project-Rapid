@@ -27,6 +27,7 @@ public class BabyController : MonoBehaviour
         if (isCrying)
         {
             cryTimer += Time.deltaTime;
+            GameManager.Instance.RecordCryDuration(Time.deltaTime);
             if (cryTimer >= 10f)
             {
                 StopCrying();

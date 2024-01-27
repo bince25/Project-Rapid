@@ -78,7 +78,8 @@ public class ScoreboardManager : MonoBehaviour
 
     public void SetCryDuration()
     {
-        cryDurationText.text = gameStats.totalCryingDuration.ToString() + " seconds";
+
+        cryDurationText.text = ((int)gameStats.totalCryingDuration).ToString() + " seconds";
     }
 
     public void SetDiaperCount()
