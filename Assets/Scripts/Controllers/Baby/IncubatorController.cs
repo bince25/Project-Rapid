@@ -33,7 +33,7 @@ public class IncubatorController : MonoBehaviour
             }
 
             // Sound effect: Baby placed
-
+            AudioManager.Instance.PlaySFX(SFX.PlaceBaby);
             if (storedBaby != null)
             {
                 Debug.Log("Baby placed successfully.");
@@ -97,6 +97,7 @@ public class IncubatorController : MonoBehaviour
             baby.SetActive(true); // Reactivate the baby when picked up
             storedBaby = null; // Clear the stored reference
 
+            AudioManager.Instance.PlaySFX(SFX.PickUpBaby);
             // Sound effect: Baby picked up
             Debug.Log("Baby picked up from incubator.");
             return baby;
