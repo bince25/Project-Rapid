@@ -65,6 +65,7 @@ public class PregnantIndicatorController : MonoBehaviour
 
     void Hit()
     {
+        AudioManager.Instance.PlaySFX(SFX.CutCord);
         GameObject vfxInstance = Instantiate(vfx, transform.position, Quaternion.identity);
         StartCoroutine(WaitAndCalculateScore(vfxInstance));
     }

@@ -24,6 +24,14 @@ public class PregnantController : MonoBehaviour
                 case true:
                     if (Input.GetKeyDown(KeyCode.RightShift))
                     {
+                        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+                        foreach (GameObject p in player)
+                        {
+                            if (p.GetComponent<PlayerController>().isPlayer2)
+                            {
+                                p.GetComponent<PlayerController>().SetCanMove(false);
+                            }
+                        }
                         // Open Mini-Game
                         PregnantManager.Instance.ActivateMiniGame(isPlayer2);
                     }
@@ -31,6 +39,14 @@ public class PregnantController : MonoBehaviour
                 case false:
                     if (Input.GetKeyDown(KeyCode.LeftShift))
                     {
+                        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+                        foreach (GameObject p in player)
+                        {
+                            if (!p.GetComponent<PlayerController>().isPlayer2)
+                            {
+                                p.GetComponent<PlayerController>().SetCanMove(false);
+                            }
+                        }
                         // Open Mini-Game
                         PregnantManager.Instance.ActivateMiniGame(isPlayer2);
                     }
@@ -102,6 +118,7 @@ public class PregnantController : MonoBehaviour
         notification = this.transform.GetChild(0).gameObject;
         notification.SetActive(true);
         isActivated = true;
+        AudioManager.Instance.PlaySFX(SFX.BasicNotification);
     }
 
     public void Deactivate()

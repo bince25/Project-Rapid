@@ -20,6 +20,7 @@ public class BabyController : MonoBehaviour
 
     public void Cry()
     {
+        AudioManager.Instance.PlaySFX(SFX.BasicNotification);
         Debug.Log("The baby is crying!");
         notification.SetActive(true);
         isCrying = true;

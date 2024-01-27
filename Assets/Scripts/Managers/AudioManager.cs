@@ -166,6 +166,53 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = startVolume;
     }
 
+    public void PlaySFX(SFX sfx, float volume = 1.0f)
+    {
+        AudioClip clip = GetSFXClip(sfx);
+        if (clip != null)
+        {
+            AudioSource source = GetPooledSFXSource();
+            if (source != null)
+            {
+                source.clip = clip;
+                source.volume = volume;
+                source.Play();
+            }
+            else
+            {
+                Debug.LogWarning("SFX source pool is full.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("SFX clip not found: " + sfx.ToString());
+        }
+    }
+
+    public void PlaySFX(SFX sfx, float volume, float pitch)
+    {
+        AudioClip clip = GetSFXClip(sfx);
+        if (clip != null)
+        {
+            AudioSource source = GetPooledSFXSource();
+            if (source != null)
+            {
+                source.clip = clip;
+                source.volume = volume;
+                source.pitch = pitch;
+                source.Play();
+            }
+            else
+            {
+                Debug.LogWarning("SFX source pool is full.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("SFX clip not found: " + sfx.ToString());
+        }
+    }
+
     /// <summary>
     /// Stops the specified music track on the specified music source if it is playing.
     /// </summary>

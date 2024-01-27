@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
             GameObject baby = incubator.PickUpBaby();
             if (baby != null)
             {
+                AudioManager.Instance.PlaySFX(SFX.PickUpBaby);
                 heldBaby = baby;
                 if (heldBaby != null)
                 {

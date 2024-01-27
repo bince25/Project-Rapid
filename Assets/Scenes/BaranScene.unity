@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.01132071, g: 0, b: 0, a: 0.4392157}
+  m_Color: {r: 0.01132071, g: 0, b: 0, a: 0.72156864}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2247,7 +2247,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &712308175
 RectTransform:
@@ -12063,7 +12063,16 @@ MonoBehaviour:
   sfxSourcesPool: []
   musicClips:
   - {fileID: 8300000, guid: 257cddbbe4c7a41c08e449b768c4607a, type: 3}
-  sfxClips: []
+  sfxClips:
+  - {fileID: 8300000, guid: 05834c6438b4c427089f5f9a061d6200, type: 3}
+  - {fileID: 8300000, guid: 6621e4bd193c34cd084168f40765688f, type: 3}
+  - {fileID: 8300000, guid: cf4b4e0bef70b4084be57abbf07845bd, type: 3}
+  - {fileID: 8300000, guid: a26b7a474dc094b62a5025e79edbef2f, type: 3}
+  - {fileID: 8300000, guid: 72a792754ba784e3e87c1fb76d276577, type: 3}
+  - {fileID: 8300000, guid: 86a8a3b31ed3c403db4db253632c70b1, type: 3}
+  - {fileID: 8300000, guid: 1dd01780e87904fc19538eb47560dde7, type: 3}
+  - {fileID: 8300000, guid: 7e932c340674e4868b625d29862289e2, type: 3}
+  - {fileID: 8300000, guid: de67c06d49f15486391d0a07ba5c056a, type: 3}
   sfxPoolSize: 10
   musicSourcesCount: 2
 --- !u!4 &1174235356

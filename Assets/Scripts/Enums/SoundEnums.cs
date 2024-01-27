@@ -6,4 +6,13 @@ public enum MusicTrack
 
 public enum SFX
 {
+    PlaceBaby,
+    PickUpBaby,
+    CutCord,
+    FailFunny,
+    Fail,
+    FailAbsurd,
+    Birth,
+    BasicClick,
+    BasicNotification
 }
