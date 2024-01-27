@@ -3,7 +3,9 @@ using UnityEngine;
 public class BabyController : MonoBehaviour
 {
     public int OriginalIncubatorId = -1;
+    [SerializeField] private int babyIndex;
     public bool isCrying = false;
+    public GameObject incubator;
     private GameObject notification;
     /// <summary>
     /// Called when the baby is placed in an incubator.
@@ -12,6 +14,15 @@ public class BabyController : MonoBehaviour
     void Start()
     {
         notification = this.transform.GetChild(0).gameObject;
+    }
+
+    public void setIndex(int babyIndex)
+    {
+        this.babyIndex = babyIndex;
+    }
+    public int getIndex()
+    {
+        return babyIndex;
     }
     public void OnPlacedInIncubator()
     {

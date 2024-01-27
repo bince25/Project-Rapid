@@ -37,6 +37,13 @@ public class Player1 : PlayerController
             {
                 ShieldGameManager.Instance.StartGame(heldBaby);
             }
+            else if (heldBaby != null && dad != null)
+            {
+                if (dad.transform.parent.GetComponent<DadController>().GiveBabyToDad(heldBaby))
+                {
+                    heldBaby = null;
+                }
+            }
         }
     }
 

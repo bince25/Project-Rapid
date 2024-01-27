@@ -80,7 +80,7 @@ public class PregnantController : MonoBehaviour
         }
     }
 
-    public void GiveBirth()
+    public void GiveBirth(int index)
     {
         if (babyIsBorn)
         {
@@ -88,6 +88,7 @@ public class PregnantController : MonoBehaviour
         }
         gaveBirth = true;
         baby = Instantiate(babyPrefab, this.transform.position, Quaternion.identity);
+        baby.GetComponent<BabyController>().setIndex(index);
         babyIsBorn = true;
     }
 

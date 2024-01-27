@@ -23,6 +23,7 @@ public class IncubatorController : MonoBehaviour
             storedBaby = baby;
             baby.transform.SetParent(transform);
             baby.transform.localPosition = Vector3.zero;
+            baby.GetComponent<BabyController>().incubator = this.gameObject;
             //baby.SetActive(false); // Hide the baby when in the incubator
 
             // Set the baby's original incubator ID if it's not already set
@@ -70,6 +71,11 @@ public class IncubatorController : MonoBehaviour
         // Trigger the baby's cry or any other action here
         baby.GetComponent<BabyController>().Cry();
         Debug.Log("The baby is crying!");
+    }
+
+    public void SetIncubatorTaken(bool taken)
+    {
+        incubatorTaken = taken;
     }
 
     /// <summary>

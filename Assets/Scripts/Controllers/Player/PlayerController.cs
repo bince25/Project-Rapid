@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     protected GameObject currentIncubatorArea = null;
     protected GameObject pregnantWoman = null;
     protected GameObject babySit = null;
+    protected GameObject dad = null;
     protected bool canMove = true;
     public bool isPlayer2;
 
@@ -90,6 +91,10 @@ public class PlayerController : MonoBehaviour
         {
             babySit = other.gameObject;
         }
+        else if (other.CompareTag("Dad"))
+        {
+            dad = other.gameObject;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -105,6 +110,10 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject == babySit)
         {
             babySit = null;
+        }
+        else if (other.gameObject == dad)
+        {
+            dad = null;
         }
     }
 
