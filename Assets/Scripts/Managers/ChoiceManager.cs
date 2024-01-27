@@ -116,7 +116,6 @@ public class ChoiceManager : MonoBehaviour
         {
             Debug.Log("Option 2 selected.");
             dadInConversation.GetComponent<DadController>().notification.SetActive(false);
-            GameManager.Instance.TimerManager.AddTime(15);
             GameManager.Instance.DecreaseSatisfactionLevel(15);
         }
         playerInConversation.GetComponent<PlayerController>().SetCanMove(true);

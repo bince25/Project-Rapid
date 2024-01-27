@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimerManager.StartTimer();
+        TimerManager.StartOrResumeTimer();
 
         AudioManager.Instance.PlayMusic(MusicTrack.BackgroundMusic, true, 0.4f);
     }
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        TimerManager.StartTimer();
+        TimerManager.StartOrResumeTimer();
     }
 
     public void StopGame()
@@ -62,14 +62,14 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        TimerManager.ResumeTimer();
+        TimerManager.StartOrResumeTimer();
         isPaused = false;
         Time.timeScale = 1;
     }
 
     public void EndGame()
     {
-        stats.timeRemaining = TimerManager.GetTimeRemaining();
+        stats.passedTime = TimerManager.GetTimePassed();
         TimerManager.StopTimer();
         Time.timeScale = 0;
         if (scoreboardManager != null)
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckGameOver()
     {
-        if (stats.satisfactionLevel <= 0 || stats.timeRemaining <= 0 || stats.satisfactionLevel >= 100)
+        if (stats.satisfactionLevel <= 0)
         {
             EndGame();
             isChecked = true;

@@ -102,7 +102,7 @@ public class ScoreboardManager : MonoBehaviour
 
     public void SetTimeRemaining()
     {
-        timeRemainingText.text = $"{Mathf.FloorToInt(gameStats.timeRemaining / 60):00}:{Mathf.FloorToInt(gameStats.timeRemaining % 60):00}";
+        timeRemainingText.text = $"{Mathf.FloorToInt(gameStats.passedTime / 60):00}:{Mathf.FloorToInt(gameStats.passedTime % 60):00}";
     }
 
     public void SetCryDuration()

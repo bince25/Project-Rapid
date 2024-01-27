@@ -12,4 +12,5 @@ public static class GameConstants
     public const float SCORE_PER_SATISFACTION_LEVEL = 3f;
     public const float SCORE_PER_CRYING_DURATION = 8f;
     public const float SCORE_PER_DIAPER_CHANGE = 20f;
+    public const float SCORE_PER_PASSED_TIME = 2f;
 }

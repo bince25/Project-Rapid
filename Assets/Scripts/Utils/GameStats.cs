@@ -8,7 +8,7 @@ public class GameStats
     public float satisfactionLevel = GameConstants.DEFAULT_SATISFACTION_LEVEL; // You can start with a max value and decrease based on game events
     public float totalCryingDuration = 0f; // Total duration of all babies crying
     public int numberOfDiaperChanges = 0;
-    public float timeRemaining = GameConstants.DEFAULT_TIMER_DURATION;
+    public float passedTime = GameConstants.DEFAULT_TIMER_DURATION;
 
     public float score = 0f;
 
@@ -19,6 +19,7 @@ public class GameStats
         score += satisfactionLevel * GameConstants.SCORE_PER_SATISFACTION_LEVEL;
         score -= totalCryingDuration * GameConstants.SCORE_PER_CRYING_DURATION;
         score += numberOfDiaperChanges * GameConstants.SCORE_PER_DIAPER_CHANGE;
+        score -= passedTime * GameConstants.SCORE_PER_PASSED_TIME;
     }
 
     /// <summary>
