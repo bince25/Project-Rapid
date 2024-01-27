@@ -13,7 +13,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnPlayButtonClicked()
     {
-        SceneManager.LoadScene("EnesScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void OnQuitButtonClicked()
