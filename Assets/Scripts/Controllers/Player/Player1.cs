@@ -44,6 +44,10 @@ public class Player1 : PlayerController
                     heldBaby = null;
                 }
             }
+            else if (heldBaby == null && dad != null)
+            {
+                dad.transform.parent.GetComponent<DadController>().KillOrTalk(this.gameObject);
+            }
         }
     }
 

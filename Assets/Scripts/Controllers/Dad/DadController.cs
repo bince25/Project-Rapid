@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DadController : MonoBehaviour
@@ -9,12 +10,14 @@ public class DadController : MonoBehaviour
     public GameObject notificationSad;
     private Animator happyAnimator;
     private Animator sadAnimator;
+    private bool isTalkable = false;
 
     void Start()
     {
         // Assuming both notifications have an Animator component
         happyAnimator = notificationHappy.GetComponent<Animator>();
         sadAnimator = notificationSad.GetComponent<Animator>();
+        StartCoroutine(TalkTimer());
     }
 
     // Update is called once per frame
@@ -22,6 +25,20 @@ public class DadController : MonoBehaviour
     {
 
     }
+    IEnumerator TalkTimer()
+    {
+        float time = Random.Range(5f, 10f);
+        yield return new WaitForSeconds(time);
+        isTalkable = true;
+    }
+    public void KillOrTalk(GameObject player)
+    {
+        if (isTalkable)
+        {
+            ChoiceManager.Instance.Activate(this.gameObject, player);
+        }
+    }
+
     public void setDadIndex(int dadIndex)
     {
         this.dadIndex = dadIndex;

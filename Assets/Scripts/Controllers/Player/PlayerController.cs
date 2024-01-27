@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     protected GameObject dad = null;
     protected bool canMove = true;
     public bool isPlayer2;
+    public Animator animator;
 
     protected virtual void Awake()
     {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     protected virtual void Start()
     {
+        animator = GetComponent<Animator>();
     }
 
 
@@ -54,7 +56,10 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 moveInput = new Vector2(Input.GetAxis(GetHorizontalInput()), Input.GetAxis(GetVerticalInput()));
             Vector2 moveVelocity = moveInput.normalized * moveSpeed;
-            rb.velocity = moveVelocity; ;
+            rb.velocity = moveVelocity;
+            animator.SetBool("IsMoving", moveInput.magnitude > 0.1f);
+            animator.SetFloat("Horizontal", moveInput.x);
+            animator.SetFloat("Vertical", moveInput.y);
         }
         else
         {
