@@ -12063,6 +12063,7 @@ MonoBehaviour:
   sfxSourcesPool: []
   musicClips:
   - {fileID: 8300000, guid: 257cddbbe4c7a41c08e449b768c4607a, type: 3}
+  - {fileID: 8300000, guid: 46c6434d9eb4d4a67accef08f87db616, type: 3}
   sfxClips:
   - {fileID: 8300000, guid: 05834c6438b4c427089f5f9a061d6200, type: 3}
   - {fileID: 8300000, guid: 6621e4bd193c34cd084168f40765688f, type: 3}
@@ -12073,6 +12074,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1dd01780e87904fc19538eb47560dde7, type: 3}
   - {fileID: 8300000, guid: 7e932c340674e4868b625d29862289e2, type: 3}
   - {fileID: 8300000, guid: de67c06d49f15486391d0a07ba5c056a, type: 3}
+  - {fileID: 8300000, guid: 9077fe0b9b84749baa10fbbdf9bf83ff, type: 3}
   sfxPoolSize: 10
   musicSourcesCount: 2
 --- !u!4 &1174235356

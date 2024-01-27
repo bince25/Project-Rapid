@@ -36,7 +36,7 @@ public class TimerManager : MonoBehaviour
 
                 if (_timeRemaining <= 10 && !_tickTockStarted)
                 {
-                    AudioManager.Instance.PlayMusic(MusicTrack.TickTock, true);
+                    AudioManager.Instance.PlayMusic(MusicTrack.TickTock, true, 1);
                     _tickTockStarted = true;
                 }
                 if (_timeRemaining > 10 && _tickTockStarted)
