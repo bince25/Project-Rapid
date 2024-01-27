@@ -2035,8 +2035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89f98b9afa7ed84389a2cbc8b2b39b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  valueText: {fileID: 0}
+  slider: {fileID: 1399821155}
+  valueText: {fileID: 972171068}
 --- !u!1 &338022709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea39ee4397404a8bbdfd098908ca4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerText: {fileID: 0}
+  TimerText: {fileID: 2091897115}
 --- !u!4 &463490017
 Transform:
   m_ObjectHideFlags: 0
@@ -22714,15 +22714,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e82b7d2a4da4d2289c89e240d54528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreboardPanel: {fileID: 0}
-  birthCountText: {fileID: 0}
-  deathFatherCountText: {fileID: 0}
-  satisfactionLevelText: {fileID: 0}
-  timeRemainingText: {fileID: 0}
-  cryDurationText: {fileID: 0}
-  diaperCountText: {fileID: 0}
-  finalScoreText: {fileID: 0}
-  finalStatusText: {fileID: 0}
+  scoreboardPanel: {fileID: 1341397403}
+  birthCountText: {fileID: 823704976}
+  deathFatherCountText: {fileID: 178764256}
+  satisfactionLevelText: {fileID: 105587917}
+  timeRemainingText: {fileID: 1059137485}
+  cryDurationText: {fileID: 1015992061}
+  diaperCountText: {fileID: 25080701}
+  finalScoreText: {fileID: 1930021025}
+  finalStatusText: {fileID: 1563617934}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
