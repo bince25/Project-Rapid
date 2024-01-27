@@ -92,6 +92,7 @@ public class PregnantController : MonoBehaviour
         baby.GetComponent<BabyController>().setIndex(index);
         babyIsBorn = true;
         GameManager.Instance.RecordBirth();
+        AudioManager.Instance.PlaySFX(SFX.Birth);
     }
 
     public GameObject TakeBaby()
@@ -100,6 +101,7 @@ public class PregnantController : MonoBehaviour
         {
             return null;
         }
+        AudioManager.Instance.PlaySFX(SFX.PickUpBaby);
         babyIsBorn = false;
         this.Deactivate();
         return baby;
