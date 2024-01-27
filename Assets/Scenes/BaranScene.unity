@@ -14621,9 +14621,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8baeceb89416a5449bdbed87d28c10db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pregnantPrefab: {fileID: 6677938708147781987, guid: 3ea090c4f9b8bde42aef7f24671212e0, type: 3}
+  pregnantPrefabs:
+  - {fileID: 6677938708147781987, guid: 3ea090c4f9b8bde42aef7f24671212e0, type: 3}
+  - {fileID: 6677938708147781987, guid: 1416037ce86e97b469dd6e63d47cf279, type: 3}
+  - {fileID: 6677938708147781987, guid: b4fbc86abc846c142a3675d8ffed9306, type: 3}
   pregnantSpawnPoint: {fileID: 248209627}
-  dadPrefab: {fileID: 1753845941956757377, guid: 855c95ee51beaff46a263f557b809de7, type: 3}
+  dadPrefabs:
+  - {fileID: 1753845941956757377, guid: 855c95ee51beaff46a263f557b809de7, type: 3}
+  - {fileID: 1753845941956757377, guid: 76c9672de314dc2469cd2ca33836ae34, type: 3}
+  - {fileID: 1753845941956757377, guid: 219037d227371024085afd1a11fd8b90, type: 3}
   dadSpawnPoints:
   - {fileID: 1493994609}
   - {fileID: 1662666080}

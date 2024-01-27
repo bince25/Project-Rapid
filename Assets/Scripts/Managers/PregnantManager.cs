@@ -4,9 +4,9 @@ using UnityEngine;
 public class PregnantManager : MonoBehaviour
 {
     private GameObject pregnant;
-    public GameObject pregnantPrefab;
+    public GameObject[] pregnantPrefabs;
     public Transform pregnantSpawnPoint;
-    public GameObject dadPrefab;
+    public GameObject[] dadPrefabs;
     public Transform[] dadSpawnPoints;
     public Dictionary<int, bool> dadSpawnPointsDictionary = new Dictionary<int, bool>();
     public GameObject miniGame;
@@ -57,6 +57,7 @@ public class PregnantManager : MonoBehaviour
     void SpawnAndActivatePregnant()
     {
         Vector3 spawnPoint = pregnantSpawnPoint.position;
+        GameObject pregnantPrefab = pregnantPrefabs[Random.Range(0, pregnantPrefabs.Length)];
         pregnant = Instantiate(pregnantPrefab, spawnPoint, Quaternion.identity);
         pregnant.GetComponent<PregnantController>().Activate();
         isSpawning = false;
@@ -70,6 +71,7 @@ public class PregnantManager : MonoBehaviour
             if (!dadSpawnPointsDictionary[i])
             {
                 spawnPoint = dadSpawnPoints[i].position;
+                GameObject dadPrefab = dadPrefabs[Random.Range(0, dadPrefabs.Length)];
                 GameObject dad = Instantiate(dadPrefab, spawnPoint, Quaternion.identity);
                 dadSpawnPointsDictionary[i] = true;
                 index = i;

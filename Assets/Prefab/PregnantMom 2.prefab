@@ -119,9 +119,9 @@ GameObject:
   - component: {fileID: 7463966507731104228}
   - component: {fileID: 1900450705423874004}
   - component: {fileID: 8671934866613069037}
-  - component: {fileID: 3436104504143496392}
+  - component: {fileID: 8152901286415547534}
   m_Layer: 0
-  m_Name: PregnantMom
+  m_Name: PregnantMom 2
   m_TagString: Pregnant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 32260eae4e184a1438f116d68840da6c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89ba4d1f730803643838bca462f341ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -272,7 +272,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &3436104504143496392
+--- !u!95 &8152901286415547534
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ Animator:
   m_GameObject: {fileID: 6677938708147781987}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 56fd4ab0e640dec4ab5fb72c1a34fca5, type: 2}
+  m_Controller: {fileID: 9100000, guid: e5242413feefdea4dafe492656d104ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
