@@ -3674,7 +3674,7 @@ MonoBehaviour:
   left: {fileID: 499407429}
   center: {fileID: 26245409}
   vfx: {fileID: 7177991128484655659, guid: 59a35ab9f68edff40b6e5332bed330f5, type: 3}
-  speed: 1
+  speed: 2
 --- !u!114 &604068811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4641,14 +4641,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e6a164dcb32507444afb2db68978f18c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19344,7 +19344,7 @@ MonoBehaviour:
   spawning: 1
   canvas: {fileID: 712308174}
   MAXIMUM_HIT_COUNT: 3
-  MAXIMUM_SPAWN_COUNT: 15
+  MAXIMUM_SPAWN_COUNT: 7
   spawnPositions:
   - {fileID: 1027591906}
   - {fileID: 820559771}

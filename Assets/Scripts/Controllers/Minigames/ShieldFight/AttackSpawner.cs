@@ -20,7 +20,7 @@ public class AttackSpawner : MonoBehaviour
     [SerializeField]
     private int MAXIMUM_HIT_COUNT = 3;
     [SerializeField]
-    private int MAXIMUM_SPAWN_COUNT = 15;
+    private int MAXIMUM_SPAWN_COUNT = 7;
     private int MAXIMUM_SIMULTANEOUS_ATTACKS = 3;
 
     [SerializeField] private List<Transform> spawnPositions;

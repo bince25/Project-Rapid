@@ -8,6 +8,7 @@ public class DadController : MonoBehaviour
     [SerializeField] private int dadIndex;
     public GameObject notificationHappy;
     public GameObject notificationSad;
+    public GameObject notification;
     private Animator happyAnimator;
     private Animator sadAnimator;
     private bool isTalkable = false;
@@ -29,6 +30,7 @@ public class DadController : MonoBehaviour
     {
         float time = Random.Range(5f, 10f);
         yield return new WaitForSeconds(time);
+        notification.SetActive(true);
         isTalkable = true;
     }
     public void KillOrTalk(GameObject player)
